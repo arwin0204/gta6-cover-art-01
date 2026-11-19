@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Sunset Cover Studio</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <h1>Vice Sunset<br>Cover Studio</h1>
+    <p class="tagline">Turn a photo and a caption into a Vice-style poster cover.</p>
+
+    <fieldset>
+      <legend>Photo</legend>
+      <div class="row" id="sceneRow">
+        <button type="button" class="scene" data-scene="boulevard">Boulevard Dusk</button>
+        <button type="button" class="scene" data-scene="pier">Neon Pier</button>
+        <button type="button" class="scene" data-scene="palms">Palm Beach</button>
+      </div>
+      <label class="file">Upload your photo
+        <input id="photo" type="file" accept="image/*">
+      </label>
+      <button id="fillAll" type="button">Use this photo in every panel</button>
+      <p class="hint">Photos stay on your machine. Click a panel in the preview to select it.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Panels</legend>
+      <div class="row" id="layoutRow">
+        <button type="button" class="layout" data-layout="poster">Poster</button>
+        <button type="button" class="layout" data-layout="triptych">Triptych</button>
+        <button type="button" class="layout" data-layout="grid">Grid 2&times;2</button>
+        <button type="button" class="layout" data-layout="single">Single</button>
+      </div>
+      <p class="hint" id="panelHint">Panel 1 of 3 selected.</p>
+      <label>Zoom <input id="zoom" type="range" min="1" max="2.5" step="0.05" value="1"></label>
+      <label>Pan left&ndash;right <input id="panX" type="range" min="-0.5" max="0.5" step="0.01" value="0"></label>
+      <label>Pan up&ndash;down <input id="panY" type="range" min="-0.5" max="0.5" step="0.01" value="0"></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Caption</legend>
+      <label>Title <input id="caption" type="text" maxlength="40" value="SUNSET HEIST"></label>
+      <label>Tagline <input id="tagline" type="text" maxlength="40" value="Vice nights, neon lights"></label>
+      <label>Title font
+        <select id="titleFont">
+          <option value="bebas">Bebas Neue</option>
+          <option value="anton">Anton</option>
+          <option value="pacifico">Pacifico</option>
+        </select>
+      </label>
+      <div class="row" id="colorRow">
+        <button type="button" class="swatch" data-color="#ffffff" style="background:#ffffff" aria-label="White"></button>
+        <button type="button" class="swatch" data-color="#ffd166" style="background:#ffd166" aria-label="Gold"></button>
+        <button type="button" class="swatch" data-color="#ff5e8a" style="background:#ff5e8a" aria-label="Pink"></button>
+        <button type="button" class="swatch" data-color="#4de3ff" style="background:#4de3ff" aria-label="Cyan"></button>
+      </div>
+      <div class="row">
+        <button type="button" class="place" data-place="bottom">Title at bottom</button>
+        <button type="button" class="place" data-place="top">Title at top</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Colour grade</legend>
+      <div class="row" id="gradeRow">
+        <button type="button" class="grade" data-grade="sunset">Sunset</button>
+        <button type="button" class="grade" data-grade="neon">Neon Nights</button>
+        <button type="button" class="grade" data-grade="golden">Golden Hour</button>
+        <button type="button" class="grade" data-grade="noir">Noir</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Export</legend>
+      <div class="row" id="sizeRow">
+        <button type="button" class="size" data-size="1080x1080">1080 &times; 1080</button>
+        <button type="button" class="size" data-size="1080x1350">1080 &times; 1350</button>
+        <button type="button" class="size" data-size="1920x1080">1920 &times; 1080</button>
+      </div>
+      <button id="export" type="button" class="primary">Export PNG</button>
+      <p id="status" role="status"></p>
+    </fieldset>
+  </section>
+
+  <section class="preview" aria-label="Live preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+    <p class="hint">Live preview &mdash; click a panel to crop and position it.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
